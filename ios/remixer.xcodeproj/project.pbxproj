@@ -14,6 +14,7 @@
 		6AA943E188805A7E7972867F /* libPods-remixer-remixerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B371539D50462D1DD457A1 /* libPods-remixer-remixerTests.a */; };
 		7276FF2B082B3EDC62EB30BB /* libPods-remixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC7A248A5EE2E794137CB23 /* libPods-remixer.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		847152622782A975006C56EC /* wave.json in Resources */ = {isa = PBXBuildFile; fileRef = 847152602782A975006C56EC /* wave.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,8 @@
 		3EC7A248A5EE2E794137CB23 /* libPods-remixer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-remixer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FF0507D56E0CE156F64D74F /* Pods-remixer-remixerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-remixer-remixerTests.debug.xcconfig"; path = "Target Support Files/Pods-remixer-remixerTests/Pods-remixer-remixerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = remixer/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8471525F2782A975006C56EC /* 81563-wave.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "81563-wave.json"; path = "../assets/lottie/81563-wave.json"; sourceTree = "<group>"; };
+		847152602782A975006C56EC /* wave.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = wave.json; path = ../assets/lottie/wave.json; sourceTree = "<group>"; };
 		A79CABECF5BA9385BD064574 /* Pods-remixer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-remixer.release.xcconfig"; path = "Target Support Files/Pods-remixer/Pods-remixer.release.xcconfig"; sourceTree = "<group>"; };
 		D6B371539D50462D1DD457A1 /* libPods-remixer-remixerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-remixer-remixerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -116,6 +119,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				8471525F2782A975006C56EC /* 81563-wave.json */,
+				847152602782A975006C56EC /* wave.json */,
 				13B07FAE1A68108700A75B9A /* remixer */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* remixerTests */,
@@ -145,7 +150,6 @@
 				6FF0507D56E0CE156F64D74F /* Pods-remixer-remixerTests.debug.xcconfig */,
 				3220C9A9A3C7EB67DDAB7D69 /* Pods-remixer-remixerTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -243,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847152622782A975006C56EC /* wave.json in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
@@ -257,6 +262,7 @@
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/newInputFile",
 			);
 			name = "Bundle React Native code and images";
 			outputPaths = (
@@ -561,7 +567,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -627,7 +633,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
