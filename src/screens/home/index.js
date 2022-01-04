@@ -10,8 +10,7 @@ import CustomHeader from '../../components/customHeader';
 import LinearGradient from 'react-native-linear-gradient';
 import colors from '../../utils/colors';
 import WaveLoader from '../../components/wave';
-import DropletIcon from '../../../assets/images/droplet.svg';
-import ProgressBar from '../../components/circularProgressIndicator';
+import ProgressBarWithButton from '../../components/progressBarWithButton';
 
 const Home = () => {
   return (
@@ -30,14 +29,14 @@ const Home = () => {
             borderWidth: 1,
             flex: 0.44,
             justifyContent: 'flex-end',
+            alignItems: 'center',
           }}>
           {/* <TouchableOpacity></TouchableOpacity> */}
           <View
             style={{
               flexDirection: 'row',
             }}>
-            <ProgressBar child={<DropletIcon color={colors.white} />} />
-            <ProgressBar child={<DropletIcon color={colors.white} />} />
+            <ProgressBarWithButton />
           </View>
         </View>
       </SafeAreaView>
