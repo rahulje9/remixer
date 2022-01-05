@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View, StatusBar} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import CustomHeader from '../../components/customHeader';
 import ProgressBarWithButton from '../../components/progressBarWithButton';
@@ -14,6 +14,8 @@ const Home = () => {
   };
   return (
     <LinearGradient colors={colors.gradient_colors} style={styles.flexOne}>
+      <StatusBar barStyle={'light-content'} />
+
       <SafeAreaView style={styles.flexOne}>
         <CustomHeader />
         <View style={styles.headingView}>

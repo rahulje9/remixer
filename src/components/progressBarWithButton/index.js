@@ -10,6 +10,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import DropletIcon from '../../../assets/images/droplet.svg';
 import colors from '../../utils/colors';
+import Player from '../audioPlayer';
 
 const AnimatedTouchableOpacity =
   Animated.createAnimatedComponent(TouchableOpacity);
@@ -90,6 +91,7 @@ const ProgressBarWithButton = ({onPlay = () => {}}) => {
           {renderIcon()}
         </CircularProgressWithChild>
       )}
+      <Player status={isButtonOn} />
     </View>
   );
 };
