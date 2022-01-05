@@ -1,24 +1,20 @@
+import React, {useState} from 'react';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {CircularProgressWithChild} from 'react-native-circular-progress-indicator';
-import React, {useEffect, useState} from 'react';
-import {TouchableOpacity, View, StyleSheet} from 'react-native';
-import colors from '../../utils/colors';
-import DropletIcon from '../../../assets/images/droplet.svg';
 import Animated, {
+  interpolate,
   interpolateColor,
   useAnimatedStyle,
-  useSharedValue,
   useDerivedValue,
   withTiming,
-  createAnimatedComponent,
-  useAnimatedProps,
-  withSpring,
-  interpolate,
 } from 'react-native-reanimated';
+import DropletIcon from '../../../assets/images/droplet.svg';
+import colors from '../../utils/colors';
 
 const AnimatedTouchableOpacity =
   Animated.createAnimatedComponent(TouchableOpacity);
 
-const ProgressBarWithButton = () => {
+const ProgressBarWithButton = ({onPlay = () => {}}) => {
   const _props = {
     activeStrokeWidth: 2,
     inActiveStrokeWidth: 2,
@@ -45,6 +41,7 @@ const ProgressBarWithButton = () => {
 
   const _setisButtonOn = () => {
     setisButtonOn(!isButtonOn);
+    onPlay(!isButtonOn);
   };
 
   const animatedButtonStyle = useAnimatedStyle(() => {

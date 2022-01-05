@@ -1,18 +1,17 @@
-import React from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  View,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
-import CustomHeader from '../../components/customHeader';
+import React, {useState} from 'react';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import colors from '../../utils/colors';
-import WaveLoader from '../../components/wave';
+import CustomHeader from '../../components/customHeader';
 import ProgressBarWithButton from '../../components/progressBarWithButton';
+import WaveLoader from '../../components/wave';
+import colors from '../../utils/colors';
 
 const Home = () => {
+  const [playing, setPlaying] = useState(false);
+
+  const _setPlaying = () => {
+    setPlaying(!playing);
+  };
   return (
     <LinearGradient colors={colors.gradient_colors} style={styles.flexOne}>
       <SafeAreaView style={styles.flexOne}>
@@ -21,8 +20,14 @@ const Home = () => {
           <Text style={styles.headingLabel}>Passing Storm</Text>
         </View>
         <View style={styles.lottieView}>
-          <WaveLoader customStyle={styles.waveOneCustomStyle} />
-          <WaveLoader customStyle={styles.waveTwoCustomStyle} />
+          <WaveLoader
+            playing={playing}
+            customStyle={styles.waveOneCustomStyle}
+          />
+          <WaveLoader
+            playing={playing}
+            customStyle={styles.waveTwoCustomStyle}
+          />
         </View>
         <View
           style={{
@@ -31,12 +36,11 @@ const Home = () => {
             justifyContent: 'flex-end',
             alignItems: 'center',
           }}>
-          {/* <TouchableOpacity></TouchableOpacity> */}
           <View
             style={{
               flexDirection: 'row',
             }}>
-            <ProgressBarWithButton />
+            <ProgressBarWithButton onPlay={_setPlaying} />
           </View>
         </View>
       </SafeAreaView>
