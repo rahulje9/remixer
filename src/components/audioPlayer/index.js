@@ -5,7 +5,6 @@ import TrackPlayer, {
   State,
   usePlaybackState,
 } from 'react-native-track-player';
-import localTrack from '../../../assets/eg1.m4a';
 
 const setupIfNecessary = async track => {
   // if app was relaunched and music was already playing, we don't setup again.
@@ -22,7 +21,7 @@ const setupIfNecessary = async track => {
   });
 
   if (track?.url) {
-    await TrackPlayer.add({...track});
+    await TrackPlayer.add(track);
   }
 
   TrackPlayer.setRepeatMode(RepeatMode.Track);

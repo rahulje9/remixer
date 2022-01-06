@@ -14,23 +14,33 @@ const useFetchAudio = () => {
 
   useEffect(() => {
     checkCacheOrDownload();
-  }, []);
+  }, [netInfo.isConnected, netInfo.isInternetReachable]);
 
   const checkCacheOrDownload = async () => {
     const path = await getData(FILE_PATH_KEY);
-    if (RNFetchBlob.fs.exists(path) && path) {
-      setcacheSuccess(true);
-      const _track = {
-        url: path,
-        artist: 'file-name',
-        title: 'file-name',
-      };
-      settrack(_track);
-    } else {
-      if (netInfo.isConnected && netInfo.isInternetReachable) {
-        fetchAudio();
+
+    if (path) {
+      if (await RNFetchBlob.fs.exists(path)) {
+        setcacheSuccess(true);
+        const _track = {
+          url: path,
+          artist: 'file-name',
+          title: 'file-name',
+        };
+        settrack(_track);
       } else {
+        _checkNetworkAndfetchAudio();
       }
+    } else {
+      _checkNetworkAndfetchAudio();
+    }
+  };
+
+  const _checkNetworkAndfetchAudio = () => {
+    setcacheSuccess(false);
+
+    if (netInfo.isConnected && netInfo.isInternetReachable) {
+      fetchAudio();
     }
   };
 
