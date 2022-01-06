@@ -2,11 +2,13 @@ import React, {useState, useEffect} from 'react';
 import RNFetchBlob from 'rn-fetch-blob';
 import {MUSIC_LINK, FILE_PATH_KEY} from '../constants/constants';
 import {storeData, getData} from '../utils/asyncStorage';
+import {useNetInfo} from '@react-native-community/netinfo';
 
 const useFetchAudio = () => {
   const [progress, setprogress] = useState(0);
   const [cacheSuccess, setcacheSuccess] = useState(false);
   const [track, settrack] = useState({});
+  const netInfo = useNetInfo();
 
   let dirs = RNFetchBlob.fs.dirs;
 
@@ -25,7 +27,10 @@ const useFetchAudio = () => {
       };
       settrack(_track);
     } else {
-      fetchAudio();
+      if (netInfo.isConnected && netInfo.isInternetReachable) {
+        fetchAudio();
+      } else {
+      }
     }
   };
 

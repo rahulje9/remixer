@@ -60,11 +60,7 @@ const ProgressBarWithButton = ({onPlay = () => {}}) => {
   });
 
   const animatedStyles = useAnimatedStyle(() => {
-    const translateY = interpolate(
-      offset.value,
-      [0, 1],
-      [0, -offset.value * 150],
-    );
+    const translateY = interpolate(offset.value, [0, 1], [0, -200]);
     return {
       transform: [{translateY}],
     };

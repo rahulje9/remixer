@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {SafeAreaView, StyleSheet, Text, View, StatusBar} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import CustomHeader from '../../components/customHeader';
 import ProgressBarWithButton from '../../components/progressBarWithButton';
@@ -14,8 +14,6 @@ const Home = () => {
   };
   return (
     <LinearGradient colors={colors.gradient_colors} style={styles.flexOne}>
-      <StatusBar barStyle={'light-content'} />
-
       <SafeAreaView style={styles.flexOne}>
         <CustomHeader />
         <View style={styles.headingView}>
@@ -31,17 +29,8 @@ const Home = () => {
             customStyle={styles.waveTwoCustomStyle}
           />
         </View>
-        <View
-          style={{
-            // borderWidth: 1,
-            flex: 0.44,
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-          }}>
-          <View
-            style={{
-              flexDirection: 'row',
-            }}>
+        <View style={styles.bottomContainer}>
+          <View style={styles.row}>
             <ProgressBarWithButton onPlay={_setPlaying} />
           </View>
         </View>
@@ -74,5 +63,13 @@ const styles = StyleSheet.create({
   },
   lottieView: {
     flex: 0.28,
+  },
+  row: {
+    flexDirection: 'row',
+  },
+  bottomContainer: {
+    flex: 0.44,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
 });
