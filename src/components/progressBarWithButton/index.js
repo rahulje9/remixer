@@ -11,6 +11,7 @@ import Animated, {
 import DropletIcon from '../../../assets/images/droplet.svg';
 import colors from '../../utils/colors';
 import Player from '../audioPlayer';
+import useFetchAudio from '../../hooks/useFetchAudio';
 
 const AnimatedTouchableOpacity =
   Animated.createAnimatedComponent(TouchableOpacity);
@@ -23,6 +24,7 @@ const ProgressBarWithButton = ({onPlay = () => {}}) => {
   };
   const [isButtonOn, setisButtonOn] = useState(false);
 
+  const {progress, track, cacheSuccess} = useFetchAudio();
   const colorValue = useDerivedValue(() => {
     return isButtonOn === true ? withTiming(1) : withTiming(0);
   }, [isButtonOn]);
@@ -31,7 +33,7 @@ const ProgressBarWithButton = ({onPlay = () => {}}) => {
     return isButtonOn === true ? withTiming(1) : withTiming(0.1);
   }, [isButtonOn]);
 
-  const [progress, setprogress] = useState(100);
+  // const [progress, setprogress] = useState(100);
 
   const renderIcon = () => (
     <DropletIcon
@@ -70,7 +72,7 @@ const ProgressBarWithButton = ({onPlay = () => {}}) => {
 
   return (
     <View style={styles.container}>
-      {progress === 100 ? (
+      {progress === 100 || cacheSuccess ? (
         <AnimatedTouchableOpacity
           onPress={_setisButtonOn}
           style={[
@@ -91,7 +93,7 @@ const ProgressBarWithButton = ({onPlay = () => {}}) => {
           {renderIcon()}
         </CircularProgressWithChild>
       )}
-      <Player status={isButtonOn} />
+      <Player status={isButtonOn} track={track} />
     </View>
   );
 };

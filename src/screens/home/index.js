@@ -33,7 +33,7 @@ const Home = () => {
         </View>
         <View
           style={{
-            borderWidth: 1,
+            // borderWidth: 1,
             flex: 0.44,
             justifyContent: 'flex-end',
             alignItems: 'center',

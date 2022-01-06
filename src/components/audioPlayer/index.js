@@ -7,7 +7,7 @@ import TrackPlayer, {
 } from 'react-native-track-player';
 import localTrack from '../../../assets/eg1.m4a';
 
-const setupIfNecessary = async () => {
+const setupIfNecessary = async track => {
   // if app was relaunched and music was already playing, we don't setup again.
   const currentTrack = await TrackPlayer.getCurrentTrack();
   if (currentTrack !== null) {
@@ -21,18 +21,16 @@ const setupIfNecessary = async () => {
     compactCapabilities: [Capability.Play, Capability.Pause, Capability.Stop],
   });
 
-  await TrackPlayer.add({
-    url: localTrack,
-    artist: 'test',
-    title: 'Pure (Demo)',
-  });
+  if (track?.url) {
+    await TrackPlayer.add({...track});
+  }
 
   TrackPlayer.setRepeatMode(RepeatMode.Track);
 };
 
 const togglePlayback = async (playbackState, status) => {
   const currentTrack = await TrackPlayer.getCurrentTrack();
-  if (currentTrack == null) {
+  if (currentTrack === null) {
     // TODO: Perhaps present an error or restart the playlist?
   } else {
     if (playbackState !== State.Playing && status === true) {
@@ -45,21 +43,20 @@ const togglePlayback = async (playbackState, status) => {
 
 const stopPlayer = async playbackState => {
   const currentTrack = await TrackPlayer.getCurrentTrack();
-  if (currentTrack == null) {
+  if (currentTrack === null) {
   } else {
     await TrackPlayer.stop();
   }
 };
 
-const Player = ({status}) => {
+const Player = ({status, track}) => {
   const playbackState = usePlaybackState();
-
   useEffect(() => {
-    setupIfNecessary();
+    setupIfNecessary(track);
     return () => {
       stopPlayer(playbackState);
     };
-  }, []);
+  }, [track]);
 
   useEffect(() => {
     togglePlayback(playbackState, status);

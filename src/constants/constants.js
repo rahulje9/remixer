@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://freesound.org/apiv2/';
+export const MUSIC_LINK = 'https://www.soundjay.com/nature/ocean-wave-2.mp3';
+// 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3';
 
-export const DOWNLOAD_AUDIO = id => `/sounds/${id}/download/`;
-export const FREE_SOUND_KEY = 'PkWPQVFxSUQdam54Xj2XXqnQA4g03jlGfLbDeTMm';
+export const FILE_PATH_KEY = '@remixer/FILE_PATH_KEY';
